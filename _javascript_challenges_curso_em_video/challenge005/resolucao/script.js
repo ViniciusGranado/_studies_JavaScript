@@ -7,7 +7,7 @@ function convert(){
     } 
 
 
-    result.innerHTML = `<h2>A distância de ${Intl.NumberFormat('de-DE').format(distanceMeters)} metros, corresponde à...</h2>
+    result.innerHTML = `<h2>A distância de ${Intl.NumberFormat('de-DE').format(distanceMeters)} metros, corresponde a...</h2>
     <ul>
         <li>${Intl.NumberFormat('de-DE').format(metersToKilometers(distanceMeters))} quilômetros (Km)</li>  
         <li>${Intl.NumberFormat('de-DE').format(metersToHectometer(distanceMeters))} hectômetros (Hm)</li>

@@ -2,7 +2,7 @@ function convertCtoKnF(){
     //Converte uma temperatura em Celsius(var C) para Fahrenheit e Kelvin.
     //(number) -> [number,number]
 
-    let C = Number(prompt("Digite uma temperatura em °C(Celsius)"))
+    let C = Number(prompt("Digite uma temperatura em °C(Celsius)").replace("," , "."))
     if (isNaN(C)){
         alert("[ERRO]Dado inválido, tente novamente!")
         convertCtoFnK()
