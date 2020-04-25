@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cálculo de desconto.</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="corpo">
+        <header><h1>Calcular desconto:</h1></header>
+        <p>Para utilizar, insira abaixo o nome do produto, o valor total e o desconto à ser calculado.</p>
+
+        <div id=result>
+           <p><label for="nomeProduto">Nome do produto:</label> <input id="nomeProduto" type="text" placeholder="SmartPhone"></p>
+           <p><label for="valorProduto">Valor total do produto:</label><input id="valorProduto" type="text" placeholder="799,00"></p>
+           <p><label for="desconto">Desconto:</label><input id="desconto" type="number" placeholder="20" min="0"> %</p>
+
+           <input id="botaoCalcular"type=button value="Calcular" onclick="validar_formulario()">
+        </div>
+        <script src="script.js"></script>
+        </div>
+    </body>
+</html>
