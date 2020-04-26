@@ -1,0 +1,65 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+body{
+    width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid silver;
+    border-right: 1px solid silver;
+}
+div#header{
+    background-color: coral;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.568);
+}
+h1.header{
+    line-height: 50px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25pt;
+}
+div#result{
+    margin: 20px 0px 0px 20px;
+}
+p.instructions{
+    margin-bottom: 20px;
+}
+p{
+    margin: 10px;
+}
+input#employeeName{
+    width: 150px;
+}
+input#employeeSalary{
+    width: 100px;
+    position: relative;
+    left: 24px;
+}
+span#employeeSalaryInput{
+    position: relative;
+    left: 22px;
+}
+input#adjustment{
+    width: 50px;
+    position: relative;
+    left: 170px;
+}
+span#adjustmentInput{
+    position: relative;
+    left: 170px;
+}
+input#adjustmentButton{
+    position: relative;
+    left: 10px;
+}
+
+/* Error Message */
+input.error{
+    border: 1px solid rgba(255, 0, 0, 0.644);
+}
+p.error{
+    font-size: 10pt;
+    color: red;
+}

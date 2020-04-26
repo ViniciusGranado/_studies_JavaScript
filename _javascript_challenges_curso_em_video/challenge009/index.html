@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reajustar salário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <header>
+            <h1 class="header">Sistema de reajuste salarial</h1>
+        </header>
+    </div>
+
+    <div id="result">
+        <p class="instructions">Para realizar o reajuste, insira os dados abaixo:</p>
+
+        <p><label for="employeeName">Nome do funcionário: </label><input id="employeeName" type="text"
+                placeholder="Mauricio Santos"></p>
+                <div id="errorAreaName"></div>
+        <p><label for="employeeSalary">Salário do funcionário: <span id="employeeSalaryInput">R$</span></label><input id="employeeSalary" type="text" placeholder="2850,00"> </p>
+                <div id="errorAreaSalary"></div>
+        <p><label for="adjustment">Reajuste: </label><input id="adjustment" type="number" placeholder="20"><span id="adjustmentInput">%</span></p>
+                <div id="errorAreaAdjustment"></div>
+
+        <input id="adjustmentButton" type="button" value="Reajustar Salário" onclick="validateForm()">
+    </div>
+
+    <script src="script.js"></script >
+    </body >
+</html >
