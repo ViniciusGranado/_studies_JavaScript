@@ -37,8 +37,8 @@ function calculate_roots(delta,a_value,b_value,c_value){
         <p>O valor de X é = ${Intl.NumberFormat('pt-BR').format(result_positive)}</p>`        
     }else{
         //TWO REAL ROOTS
-        const result_positive = ((b_value)+Math.sqrt(delta))/2*a_value
-        const result_negative = ((b_value)-Math.sqrt(delta))/2*a_value
+        const result_positive = ((-b_value)+Math.sqrt(delta))/2*a_value
+        const result_negative = ((-b_value)-Math.sqrt(delta))/2*a_value
 
         result_area.innerHTML += `<p class="result_message">Como delta é maior que zero, há duas raízes reais.</p>
         <p>O valor de X' é = ${Intl.NumberFormat('pt-BR').format(result_positive)}</p>
