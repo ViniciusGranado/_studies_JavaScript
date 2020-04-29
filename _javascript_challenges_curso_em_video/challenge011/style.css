@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(49, 131, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+}
+header {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+div#result {
+    width: 660px;
+    height: 322px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 100px;
+    background-color: #FFF;
+}
+div#year_input {
+    /* background-color: brown; */
+    width: 300px;
+    margin: 0 auto;
+}
+div#year_input p#input_label {
+    font-size: 30pt;
+}
+div#year_input p#error_message{
+    font-size: 14pt;
+    color: rgb(255, 58, 58);
+    position: relative;
+    top: -20px;
+}
+div#year_input input {
+    text-align: right;
+    font-size: 50px;
+    width: 150px;
+    height: 50px;
+}
+div#year_input input.error_message{
+    text-align: right;
+    font-size: 50px;
+    width: 150px;
+    height: 50px;
+    border-color: rgb(255, 58, 58);
+}
+
+input.button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 70px;
+    border: 1px solid silver;
+    border-radius: 20px;
+    font-size: 15pt;
+    transition: all 0.2s linear; 
+}
+input.button:hover {
+    background-color: rgb(96, 160, 255);
+}
+
+/* Result area */
+p#result_text{
+    font-size: 29pt;
+    position: relative;
+}
+span.bissextile{
+    background-color:#A6EB9A;
+    color: #367d21;
+}
+span.not_bissextile{
+    background-color:#e28883;
+    color: #7f190b;
+}
