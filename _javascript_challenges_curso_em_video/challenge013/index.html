@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Situação do Aluno</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header><h1>Situação do Aluno</h1></header>
+
+        <div class="result">
+
+            <p class="how_to_text">Para utilizar, digite abaixo o nome e as duas notas semestrais do aluno.</p>
+
+            <div class="input_area">
+                
+                <p class="input_text span_selector"><label for="input_name">Nome do aluno: </label><input type="text" id="input_name" class="input_name" placeholder="Marcos Pedro do Santos"><span class="span_name">Valor inválido.</span></p>
+
+                <p class="input_text"><label for="input_grade1">Primeira nota: </label><input type="text" id="input_grade1" class="input_grade1" placeholder="8,25"><span class="span_grade1"> Valor inválido.</span></p>
+
+                <p class="input_text"><label for="input_grade2">Segunda nota: </label><input type="text" id="input_grade2" class="input_grade2" placeholder="9,50"><span class="span_grade2">Valor inválido.</span></p>
+               
+            </div>
+
+            <input type="button" class="button verify_button"value="Verificar situação do aluno">
+
+            <script src="script.js"></script>
+        </div>
+    </body>
+</html>

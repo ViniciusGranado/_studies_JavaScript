@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital@0;1&family=Oswald&display=swap');
+
+body{ 
+    font-family: 'Oswald', sans-serif;
+}
+
+/* HEADER */
+header{
+    font-size: 30pt;
+    text-align: center;
+    margin: 20px 0px;
+    letter-spacing: 3px;
+}
+
+/* RESULT AREA */
+div.result{
+    width: 440px;
+    height: 210px;
+    padding: 30px;
+    margin: auto;
+    border: 2px solid rgba(161, 161, 161, 0.527);
+    letter-spacing: 1px;
+}
+div.result p.how_to_text{
+    margin-bottom: 20px;
+}
+
+/* INPUTS AREA */
+div.input_area{
+    border-top: 2px solid rgba(161, 161, 161, 0.527);
+    border-bottom: 2px solid rgba(161, 161, 161, 0.527);
+    padding: 5px 20px;
+}
+div.input_area p.input_text{
+    margin: 10px;
+}
+div.input_area input{
+ width: 150px;
+ text-align: right;
+ margin-left: 5px;
+}
+.input_area .input_grade1, .input_area .input_grade2{
+    width: 50px;
+    position: relative;
+    left: 107px
+}
+.input_area .input_grade2{
+    left: 109px
+}
+
+
+/* BUTTON */
+div.result input.button{
+    display: block;
+    margin: 20px auto;
+    font-family: 'Jost', sans-serif;
+}
+
+
+/* Result area */
+h2.result_title{
+    text-align: center;
+    font-size: 30pt;
+    margin-bottom: 20px;
+}
+h3.result_subtitle{
+    font-size: 17pt;
+    margin-bottom: 20px;
+}
+p.result_text{
+    font-size: 13pt;
+    margin-bottom: 15px;
+}
+span.approved{
+    color: #387E22;
+    background-color: #A6EB9A; 
+}
+span.retake{
+    color: #C3884B;
+    background-color: #FFFFE3; 
+}
+span.failed{
+    color: #942F23;
+    background-color: #E28783;
+}
+input.back_button{
+    position: relative;
+    top: 15px;
+}
+
+
+/* Error Messages */
+div.input_area span.span_name, span.span_grade1, span.span_grade2{
+    opacity: 0;
+    font-size: 10px;
+    color: red;
+}
+div.input_area span.span_name{
+    margin-left: 17px;
+}
+div.input_area span.span_grade1{
+    margin-left: 120px;
+}
+div.input_area span.span_grade2{
+    margin-left: 125px;
+}
+
+div.input_area span.error_message{
+    opacity: 1;
+}
+
+input.input_error{
+    border: 1px solid red;
+}
