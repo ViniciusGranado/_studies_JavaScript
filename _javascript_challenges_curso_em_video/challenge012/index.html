@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Comparação de Preços</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <header><h1>Comparação de preços.</h1></header>
+
+        <div id="result">
+            <p id="text">Para verificar a oscilação do preço de um produto, insíra os dados abaixos:</p>
+
+            <p><label for="old_price_input">Preço anterior do produto: R$</label><input type="text" id="old_price_input" class="input_value" placeholder="250,99"></p>
+
+            <p id="old_price_error"></p>
+
+            <p><label for="new_price_input">Preço atual do produto: <span id="span_input">R$</span></label><input type="text" id="new_price_input" class="input_value" placeholder="299,99"></p>
+
+            <p id="new_price_error" class="error_message"></p>
+
+            <input type="button" value="Verificar" id="verify_button" class="button">   
+
+
+            <script src="script.js"></script>
+        </div>
+
+    </body>
+</html>

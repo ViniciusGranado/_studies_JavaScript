@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+h1{
+    width: 640px;
+    margin: 30px auto 0px auto;
+    border: 1px solid silver;  
+    border-bottom: none;
+    font-size: 30pt;
+    text-align: center;
+}
+
+
+div#result{
+    width: 600px;
+    margin: auto;
+    border: 1px solid silver;
+    padding: 20px;
+}
+p{
+    margin: 20px 10px;
+    text-align: justify;
+    font-size: 15pt;
+}
+p#text{
+    font-size: 20pt;
+}
+input.input_value{
+    width: 50px;
+}
+input#new_price_input{
+    position: relative;
+    left: 28px;
+}
+span#span_input{
+    position: relative;
+    left: 28px; 
+}
+
+input.button{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    margin-top: 20px;
+    transform: translateX(-50%);
+}
+
+/* Result area */
+h2#result_title{
+    text-align: center;
+}
+
+
+/* Error Messages */
+input.input_error{
+    border: 1px solid red;
+}
+p.error_message{
+    position: relative;
+    left: 250px;
+    margin-top: -20px;
+    font-size: 10pt;
+    color: red;
+}
+
+
