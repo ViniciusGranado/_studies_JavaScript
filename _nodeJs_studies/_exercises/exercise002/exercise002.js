@@ -1,4 +1,4 @@
-var prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 
 const userName = prompt('Digite o seu nome: ');
 console.log(`Bem vindo ${userName}.\n`);
