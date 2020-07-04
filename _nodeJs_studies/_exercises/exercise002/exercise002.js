@@ -1,6 +1,6 @@
-const readlineSync = require('readline-sync');
+var prompt = require('prompt-sync')();
 
-const userName = readlineSync.question('Digite o seu nome: ');
+const userName = prompt('Digite o seu nome: ');
 console.log(`Bem vindo ${userName}.\n`);
 
-readlineSync.question('Aperte Enter para finalizar.');
+prompt('Aperte Enter para finalizar.');
