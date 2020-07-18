@@ -31,7 +31,7 @@ function showProgression (firstTerm, commonDifference) {
   let i = 0;
   let term = firstTerm;
 
-  while (i < 10)1 {
+  while (i < 10) {
     progressionTerms.push(term);
     i++;
     term += commonDifference;
