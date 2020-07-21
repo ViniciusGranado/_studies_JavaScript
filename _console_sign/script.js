@@ -11,7 +11,7 @@ function sleep(milliseconds) {
 }
 
 function sign (message) {
-  const canvas = ' '.repeat(30);
+  const canvas = ' '.repeat(28);
   const sentence = message;
   
   let canvasIndexStart = 0
@@ -23,27 +23,28 @@ function sign (message) {
   let padding = 1;
 
   while (true) {
+    console.clear();
 
-    console.clear()
+    const signMessage = '|' + canvas.substr(canvasIndexStart, canvasIndexEnd) + sentence.substr(sentenceIndexStart,sentenceIndexEnd).padEnd(padding) + '|';
 
     console.log('-'.repeat(canvas.length + 2));
-    console.log('|' + canvas.substr(canvasIndexStart, canvasIndexEnd) + sentence.substr(sentenceIndexStart,sentenceIndexEnd).padEnd(padding) + '|');
+    console.log(signMessage);
     console.log('-'.repeat(canvas.length + 2));
 
     canvasIndexEnd--;
-    sentenceIndexEnd++;
-    padding++;
-
-    if (sentenceIndexEnd >= canvas.length + 1) {
+    
+    if (sentenceIndexEnd >= canvas.length) {
       sentenceIndexStart++;
-      padding --;
+    } else {
+      sentenceIndexEnd++;
+      padding++;
     };
 
     sleep(100);
   
     // Restart loop
     if (sentenceIndexStart === sentence.length + 1) {
-      canvasIndexStart = 0
+      canvasIndexStart = 0;
       canvasIndexEnd = canvas.length - 1;
   
       sentenceIndexStart = 0;
@@ -54,4 +55,4 @@ function sign (message) {
   };
 };
 
-sign(prompt('Digite uma frase qualquer: '));
+sign(prompt('Digite sua mensagem: '));
