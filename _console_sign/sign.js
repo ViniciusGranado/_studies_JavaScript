@@ -1,6 +1,3 @@
-// Module import
-const prompt = require('prompt-sync')();
-
 // Functions
 function sleep(milliseconds) {
   const date = Date.now();
@@ -11,48 +8,51 @@ function sleep(milliseconds) {
 }
 
 function sign (message) {
-  const canvas = ' '.repeat(28);
-  const sentence = message;
+  const canvas = ' '.repeat(70);
+  const line = message;
   
   let canvasIndexStart = 0
   let canvasIndexEnd = canvas.length - 1;
   
-  let sentenceIndexStart = 0;
-  let sentenceIndexEnd = 1;
+  let lineIndexStart = 0;
+  let lineIndexEnd = 1;
   
   let padding = 1;
 
   while (true) {
     console.clear();
-
-    const signMessage = '|' + canvas.substr(canvasIndexStart, canvasIndexEnd) + sentence.substr(sentenceIndexStart,sentenceIndexEnd).padEnd(padding) + '|';
-
+    
     console.log('-'.repeat(canvas.length + 2));
-    console.log(signMessage);
+    for (let i = 0; i < 5; i++) {
+      const signMessage = '|' + canvas.substr(canvasIndexStart, canvasIndexEnd) + line[i].substr(lineIndexStart,lineIndexEnd).padEnd(padding) + '|';
+      
+      console.log(signMessage);
+    }
     console.log('-'.repeat(canvas.length + 2));
+    
 
     canvasIndexEnd--;
     
-    if (sentenceIndexEnd >= canvas.length) {
-      sentenceIndexStart++;
+    if (lineIndexEnd >= canvas.length) {
+      lineIndexStart++;
     } else {
-      sentenceIndexEnd++;
+      lineIndexEnd++;
       padding++;
     };
 
-    sleep(100);
+    sleep(80);
   
     // Restart loop
-    if (sentenceIndexStart === sentence.length + 1) {
+    if (lineIndexStart === line[0].length + 1) {
       canvasIndexStart = 0;
       canvasIndexEnd = canvas.length - 1;
   
-      sentenceIndexStart = 0;
-      sentenceIndexEnd = 1;
+      lineIndexStart = 0;
+      lineIndexEnd = 1;
 
       padding = 1;
     };
   };
 };
 
-sign(prompt('Digite sua mensagem: '));
+module.exports = { sign };
