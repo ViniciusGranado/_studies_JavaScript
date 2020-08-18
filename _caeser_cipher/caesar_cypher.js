@@ -11,6 +11,8 @@ while (true) {
     interface.showEncryptMenu(menuOption);
   } else if (menuOption === 2) {
     interface.showDecryptMenu(menuOption);
+  } else if (menuOption === 3) {
+    interface.showAboutArea();
   } else {
     break;
   };
@@ -19,4 +21,4 @@ while (true) {
 }
 
 console.log('\nFinalizando...');
-interface.sleep(3000);
+interface.sleep(2000);

@@ -7,7 +7,7 @@ function getMenuOption () {
     if (checkIfOptionIsValid(option)) {
       return +option;
     } else {
-      console.log('Opção inválida, tente novamente.');
+      console.log('Opção inválida, tente novamente.\n');
     };
   };
 }
@@ -15,7 +15,7 @@ function getMenuOption () {
 function checkIfOptionIsValid (option) {
   if (!option) { return false };
   if (isNaN(option) || !Number.isInteger(+option)) { return false };
-  if (+option < 1 || +option > 3) { return false };
+  if (+option < 1 || +option > 4) { return false };
 
   return true;
 }

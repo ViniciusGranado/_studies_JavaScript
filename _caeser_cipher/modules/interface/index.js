@@ -10,7 +10,7 @@ function formatHeading (message) {
 function showHome () {
   formatHeading('CIFRA DE CESAR');
 
-  console.log('A cifra de cesar é uma técnica para encriptar textos, utilizando uma chave de deslocamento.\nSelecione abaixo se deseja encriptar ou decriptar um texto, ou selecione "Sobre" para\nconhecer mais sobre a cifra.');
+  console.log('A cifra de cesar é uma técnica para encriptar textos,\nutilizando uma chave de deslocamento.\nSelecione abaixo se deseja encriptar ou decriptar um texto,\nou selecione "Sobre" para conhecer mais sobre a cifra.');
 
   console.log('----------------------');
 
@@ -20,6 +20,7 @@ function showMenu () {
   console.log('[1] Encriptar');
   console.log('[2] Decriptar');
   console.log('[3] Sobre a Cifra de César');
+  console.log('[4] Sair')
   console.log('----------------------');
 }
 
@@ -73,6 +74,15 @@ function showDecryptMenu (option) {
   prompt('Aperte Enter para voltar ao menu principal.');
 }
 
+function showAboutArea () {
+  console.clear();
+
+  formatHeading('Sobre a Cifra de Cesar');
+
+  console.log('\nA Cifra de César, também conhecida como cifra de troca ou código de César,\né uma das mais simples e conhecidas técnicas de criptografia. É um tipo de\ncifra de substituição na qual cada letra do texto é substituída por outra,\nque se apresenta no alfabeto abaixo dela um número fixo de vezes, numero\neste que é chamado de "chave". Por exemplo, com uma troca de três posições,\nA seria substituído por D, B se tornaria E, e assim por diante. O nome do\nmétodo é em homenagem a Júlio César, que o usou para se comunicar com os\nseus generais.\n')
+  prompt('Aperte Enter para voltar para o menu principal.');
+}
+
 function sleep(milliseconds) {
   const date = Date.now();
   let currentDate = null;
@@ -87,5 +97,6 @@ module.exports = {
   showMenu,
   showEncryptMenu,
   showDecryptMenu,
+  showAboutArea,
   sleep
 };
