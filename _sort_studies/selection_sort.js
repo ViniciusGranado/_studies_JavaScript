@@ -8,11 +8,9 @@ function selectionSort(list) {
       };
     };
 
-    if (list[minorValueIndex] !== list[i]) {
-      const aux = list[minorValueIndex];
-      list[minorValueIndex] = list[i];
-      list[i] = aux;
-    };
+    const aux = list[minorValueIndex];
+    list[minorValueIndex] = list[i];
+    list[i] = aux;
   };
 
   return list;
