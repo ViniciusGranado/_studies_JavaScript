@@ -25,6 +25,13 @@ server.post('/contato', (req, res) => {
   res.send('<h1>Mensagem enviada.</h1>');
 });
 
+server.get('/info/:name/:position/:color', (req, res) => {
+  res.send(`<h1>Ola ${req.params.name}</h1>
+            <p>O seu cargo e: ${req.params.position}.</p>
+            <p>A sua cor favorita e: ${req.params.color}.</p>
+            `);
+});
+
 server.listen(3001, () => {
   console.log('Servidor em http://localhost:3001');
   console.log('Para desligar: Ctrl + C');
