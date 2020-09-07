@@ -1,9 +1,14 @@
 const express = require('express');
+const serveStatic = require('serve-static');
 
 const server = express();
 
 server.get('/', (req, res) => {
-  res.send('<h1>Home</h1>');
+  res.sendFile(__dirname + '/html_test/index.html');
+});
+
+server.get('/sobre', (req, res) => {
+  res.sendFile(__dirname + '/html_test/sobre.html');
 });
 
 server.get('/contato', (req, res) => {
