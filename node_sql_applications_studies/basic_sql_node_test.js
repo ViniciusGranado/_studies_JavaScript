@@ -4,8 +4,14 @@ const sequelize = new Sequelize('test', 'root', '123456', {
   dialect: 'mysql'
 });
 
-sequelize.authenticate().then(() => {
-  console.log('Successfully connected!');
-}).catch(error => {
-  console.log(`Error connecting: ${error}`);
+// Post
+const Post = sequelize.define('post', {
+  title: {
+    type: Sequelize.STRING
+  },
+  content: {
+    type: Sequelize.TEXT
+  }
 });
+
+Post.sync({force: true});
