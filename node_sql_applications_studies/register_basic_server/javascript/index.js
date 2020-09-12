@@ -2,9 +2,7 @@ const express = require('express');
 const Sequelize = require('sequelize');
 const handlebars =  require('express-handlebars');
 
-const { userInfo } = require('os');
 const server = express();
-
 
 //Config
   //Template Engine
@@ -17,6 +15,14 @@ const server = express();
     dialect: 'mysql'
   });
 
+// Routes
+server.get('/register', (req, res) => {
+  res.render('form');
+});
+
+server.post('/register', (req, res) => {
+  res.send('DONE');
+});
 
 server.listen(3001, () => {
   console.log('Server running on http://localhost:3001');
