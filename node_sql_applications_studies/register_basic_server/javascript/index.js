@@ -1,6 +1,7 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const handlebars =  require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const server = express();
 
@@ -8,6 +9,10 @@ const server = express();
   //Template Engine
   server.engine('handlebars', handlebars({defaultLayout: 'main'}));
   server.set('view engine', 'handlebars');
+
+  //Body Parser
+  server.use(bodyParser.urlencoded({extended: false}));
+  server.use(bodyParser.json());
 
   //MySql DB connection
   const sequelize = new Sequelize('test', 'root', '123456', {
@@ -21,7 +26,7 @@ server.get('/register', (req, res) => {
 });
 
 server.post('/register', (req, res) => {
-  res.send('DONE');
+  res.send(`Title: ${req.body.title} Content: ${req.body.content}`);
 });
 
 server.listen(3001, () => {
