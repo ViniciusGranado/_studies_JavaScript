@@ -1,5 +1,4 @@
 const express = require('express');
-const Sequelize = require('sequelize');
 const handlebars =  require('express-handlebars');
 const bodyParser = require('body-parser');
 
@@ -14,11 +13,7 @@ const server = express();
   server.use(bodyParser.urlencoded({extended: false}));
   server.use(bodyParser.json());
 
-  //MySql DB connection
-  const sequelize = new Sequelize('test', 'root', '123456', {
-    host: 'localhost',
-    dialect: 'mysql'
-  });
+
 
 // Routes
 server.get('/register', (req, res) => {
