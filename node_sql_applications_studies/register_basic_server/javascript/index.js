@@ -18,7 +18,9 @@ const server = express();
 
 // Routes
 server.get('/', (req, res) => {
-  res.render('home');
+  Post.findAll({order: [['id', 'DESC']]}).then((posts) => {
+    res.render('home', {posts: posts});
+  });
 });
 
 server.get('/register', (req, res) => {
