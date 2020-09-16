@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars =  require('express-handlebars');
 const bodyParser = require('body-parser');
+const Post = require('../../models/Post');
 
 const server = express();
 
@@ -16,12 +17,23 @@ const server = express();
 
 
 // Routes
+server.get('/', (req, res) => {
+  res.render('home');
+});
+
 server.get('/register', (req, res) => {
   res.render('form');
 });
 
 server.post('/register', (req, res) => {
-  res.send(`Title: ${req.body.title} Content: ${req.body.content}`);
+  Post.create({
+    title: req.body.title,
+    content: req.body.content
+  }).then(() => {
+    res.redirect('/');
+  }).catch((error) => {
+    res.send(`Error: ${error}`);
+  })
 });
 
 server.listen(3001, () => {
