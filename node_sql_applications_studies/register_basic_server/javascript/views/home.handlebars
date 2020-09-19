@@ -1,9 +1,19 @@
 <h1>Posts list: </h1>
+
+<a href='/register'>
+  <button>Register new post</button>
+</a>
+
 <hr>
 
 {{#each posts}}
   <h1>{{dataValues.title}}</h1>
   <small>{{dataValues.createdAt}}</small>
   <p>{{dataValues.content}}</p>
+
+  <a href='/delete/{{dataValues.id}}'>
+    <button>Delete</button>
+  </a>
+
   <hr>
 {{/each}}

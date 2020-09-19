@@ -27,6 +27,16 @@ server.get('/register', (req, res) => {
   res.render('form');
 });
 
+server.get('/delete/:id', (req, res) => {
+  Post.destroy({where: {'id': req.params.id}}).then(() => {
+    res.send(`<p>Post successfully deleted.</p>
+              <a href='/'><button>Home</button></a>`);
+  }).catch((error) => {
+    res.send('Error: This post doesn\'t exist.');
+  })
+});
+
+
 server.post('/register', (req, res) => {
   Post.create({
     title: req.body.title,
