@@ -1,29 +1,39 @@
-const numeroPorExtenso = (numeroString) => {
+const validaNumero = (numeroString) => {
   const numero = Number.parseFloat(numeroString);
 
-  if (numero < -999999999.99 || numero > 999999999.99) {
-    return undefined;
-  }
+  return !(Number.isNaN(numero) || numero < -999999999.99 || numero > 999999999.99);
+}
+
+const converteStringDeNumeroParaExtenso = (numeroString) => {
+  if (!validaNumero(numeroString)) return undefined;
+  if (Number.parseFloat(numeroString) === 0) return "ZERO";
 
   let extenso = [];
+  let isNegativo = false;
 
-  console.log(numero.toLocaleString('pt-BR').split('.').reverse());
+  if (Number.parseFloat(numeroString) < 0) {
+    isNegativo = true;
+    numeroString = numeroString.slice(1);
+  }
+
+
+  const numero = Number.parseFloat(numeroString);
   numero
     .toLocaleString('pt-BR')
     .split('.')
     .reverse()
-    .forEach((item, index) => {
+    .forEach((item, index, array) => {
       switch (index) {
         case 0:
-          extenso.push(escreverPorExtenso(item));
+          extenso.unshift(escreverPorExtenso(item));
           break;
 
         case 1:
-          extenso.push(`${escreverPorExtenso(item)} MIL`);
+          extenso.unshift(`${escreverPorExtenso(item)} MIL`);
           break;
 
         case 2:
-          extenso.push(`${escreverPorExtenso(item)} MILHOES`);
+          extenso.unshift(`${escreverPorExtenso(item)} MILHOES`);
           break;
 
         default:
@@ -31,145 +41,67 @@ const numeroPorExtenso = (numeroString) => {
       }
     });
 
-  return extenso.reverse().join(' ');
+  if (isNegativo) extenso.unshift('MENOS');
+  return extenso.join(' ');
 };
 
 const getCentenas = (numero) => {
-  switch (Number.parseInt(numero)) {
-    case 1:
-      return 'CENTO';
-    case 2:
-      return 'DUZENTOS';
-    case 3:
-      return 'TREZENTOS';
-    case 4:
-      return 'QUATROCENTOS';
-    case 5:
-      return 'QUINHENTOS';
-    case 6:
-      return 'SEISCENTOS';
-    case 7:
-      return 'SETECENTOS';
-    case 8:
-      return 'OITOCENTOS';
-    case 9:
-      return 'NOVECENTOS';
-    case 0:
-    default:
-      return '';
-  }
+  const centenas = [
+    '',
+    'CENTO',
+    'DUZENTOS',
+    'TREZENTOS',
+    'QUATROCENTOS',
+    'QUINHENTOS',
+    'SEISCENTOS',
+    'SETECENTOS',
+    'OITOCENTOS',
+    'NOVECENTOS',
+  ];
+  return centenas[Number.parseInt(numero)];
 };
 
 const getDezenas = (numero) => {
-  if (Number.parseInt(numero) < 20) {
-    switch (Number.parseInt(numero)) {
-      case 1:
-        return getUnidades(numero);
-      case 2:
-        return getUnidades(numero);
-      case 3:
-        return getUnidades(numero);
-      case 4:
-        return getUnidades(numero);
-      case 5:
-        return getUnidades(numero);
-      case 6:
-        return getUnidades(numero);
-      case 7:
-        return getUnidades(numero);
-      case 8:
-        return getUnidades(numero);
-      case 9:
-        return getUnidades(numero);
-      case 10:
-        return `DEZ`;
-      case 11:
-        return `ONZE`;
-      case 12:
-        return `DOZE`;
-      case 13:
-        return `TREZE`;
-      case 14:
-        return `CATORZE`;
-      case 15:
-        return `QUINZE`;
-      case 16:
-        return `DEZESSEIS`;
-      case 17:
-        return `DEZESSETE`;
-      case 18:
-        return `DEZOITO`;
-      case 19:
-        return `DEZENOVE`;
-      default:
-        return '';
-    }
-  }
-
   const numeroPad = numero.padStart(2, '0');
   const dezena = numeroPad[0];
   const unidade = numeroPad[1];
-  switch (Number.parseInt(dezena)) {
-    case 2:
-      return `VINTE${getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''}`;
-    case 3:
-      return `TRINTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 4:
-      return `QUARENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 5:
-      return `CINQUENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 6:
-      return `SESSENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 7:
-      return `SETENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 8:
-      return `OITENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 9:
-      return `NOVENTA${
-        getUnidades(unidade) ? ` E ${getUnidades(unidade)}` : ''
-      }`;
-    case 0:
-    default:
-      return '';
+
+  if (dezena === "1") {
+    const conjuntoDez = [
+      'DEZ',
+      'ONZE',
+      'DOZE',
+      'TREZE',
+      'CATORZE',
+      'QUINZE',
+      'DEZESSEIS',
+      'DEZESSETE',
+      'DEZOITO',
+      'DEZENOVE',
+    ];
+    
+    return conjuntoDez[unidade];
   }
+
+  const dezenas = [
+    '',
+    '',
+    'VINTE',
+    'TRINTA',
+    'QUARENTA',
+    'CINQUENTA',
+    'SESSENTA',
+    'SETENTA',
+    'OITENTA',
+    'NOVENTA',
+  ]
+
+  return dezenas[dezena];
 };
 
 const getUnidades = (numero) => {
-  switch (Number.parseInt(numero)) {
-    case 1:
-      return 'UM';
-    case 2:
-      return 'DOIS';
-    case 3:
-      return 'TRES';
-    case 4:
-      return 'QUATRO';
-    case 5:
-      return 'CINCO';
-    case 6:
-      return 'SEIS';
-    case 7:
-      return 'SETE';
-    case 8:
-      return 'OITO';
-    case 9:
-      return 'NOVE';
-    case 0:
-    default:
-      return '';
-  }
+  const unidades = ['', 'UM', 'DOIS', 'TRES', 'QUATRO', 'CINCO', 'SEIS', 'SETE', 'OITO', 'NOVE'];
+  return unidades[Number.parseInt(numero)];
 };
 
 const escreverPorExtenso = (numero) => {
@@ -178,16 +110,21 @@ const escreverPorExtenso = (numero) => {
   let retorno = '';
 
   numero.split(',').forEach((item, index) => {
-    console.log(item);
     switch (index) {
       case 0:
         const numeroComZeros = item.padStart(3, '0');
-        retorno += `${getCentenas(numeroComZeros[0])}${
-          getDezenas(numeroComZeros[0]) ? ` E ` : ''
-        }${getDezenas(numeroComZeros.slice(1))}`;
+        const centena = Number.parseInt(numeroComZeros[0]);
+        const dezena = Number.parseInt(numeroComZeros[1]);
+        const unidade = Number.parseInt(numeroComZeros[2]);
+
+        retorno += `${getCentenas(numeroComZeros[0])}`;
+        retorno += `${(dezena || unidade) && centena ? " A " : ""}`;
+        retorno += `${getDezenas(numeroComZeros.slice(1))}`;
+        retorno += `${dezena && unidade && dezena !== 1 ? " B " : ""}`
+        retorno += `${(dezena !== 1) ? getUnidades(numeroComZeros[2]) : ""}`;
+
         break;
       case 1:
-        console.log(escreverPorExtenso(item));
         retorno += item ? ` PONTO ${escreverPorExtenso(item)}` : '';
     }
   });
@@ -195,17 +132,13 @@ const escreverPorExtenso = (numero) => {
   return retorno;
 };
 
-// do {
-const numeroUsuario = prompt('Digite um número: ');
-console.log(numeroPorExtenso(numeroUsuario));
-// } while (true);
+const programa = () => {
+  let desejaContinuar;
 
-// for (let i = 0; i < 10; i++) {
-//   console.log(getCententas(String(i)));
-// }
-// for (let i = 0; i < 1000; i++) {
-//   console.log(escreverPorExtenso(String(i)));
-// }
-// for (let i = 0; i < 10; i++) {
-//   console.log(getCententas(String(i)));
-// }
+  // do {
+    const numeroUsuario = prompt('Digite um número: ');
+    console.log(converteStringDeNumeroParaExtenso(numeroUsuario));
+  // } while (true);
+}
+
+programa();
