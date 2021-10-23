@@ -18,28 +18,46 @@ const converteStringDeNumeroParaExtenso = (numeroString) => {
 
 
   const numero = Number.parseFloat(numeroString);
-  numero
-    .toLocaleString('pt-BR')
-    .split('.')
-    .reverse()
-    .forEach((item, index, array) => {
-      switch (index) {
-        case 0:
-          extenso.unshift(escreverPorExtenso(item));
-          break;
+  const numeroArray =  numero.toLocaleString('pt-BR').split('.').reverse();
 
-        case 1:
-          extenso.unshift(`${escreverPorExtenso(item)} MIL`);
-          break;
+  const centenas = Number.parseFloat(numeroArray[0]);
+  const milhares = Number.parseInt(numeroArray[1]);
+  const milhoes = Number.parseInt(numeroArray[2]);
 
-        case 2:
-          extenso.unshift(`${escreverPorExtenso(item)} MILHOES`);
-          break;
+  numeroArray.forEach((item, index, array) => {
+    switch (index) {
+      case 0:
+        extenso.unshift(escreverPorExtenso(item));
 
-        default:
-          break;
-      }
-    });
+        if (
+          (
+            (item === "100" || (centenas % 100 === 0  && centenas)) &&
+            (milhares || milhoes)
+          ) || 
+          (milhoes && !milhares && centenas) ||
+          (milhares && centenas && centenas < 100)
+        ) {
+          extenso.unshift('E');
+        };
+
+        break;
+
+      case 1:
+        if (milhares) {
+          extenso.unshift('MIL');
+          extenso.unshift(`${escreverPorExtenso(item)}`);
+        };
+        break;
+
+      case 2:
+        extenso.unshift(milhoes === 1 ? "MILHÃO" : "MILHÕES");
+        extenso.unshift(`${escreverPorExtenso(item)}`);
+        break;
+
+      default:
+        break;
+    }
+  });
 
   if (isNegativo) extenso.unshift('MENOS');
   return extenso.join(' ');
@@ -118,9 +136,9 @@ const escreverPorExtenso = (numero) => {
         const unidade = Number.parseInt(numeroComZeros[2]);
 
         retorno += `${getCentenas(numeroComZeros[0])}`;
-        retorno += `${(dezena || unidade) && centena ? " A " : ""}`;
+        retorno += `${(dezena || unidade) && centena ? " E " : ""}`;
         retorno += `${getDezenas(numeroComZeros.slice(1))}`;
-        retorno += `${dezena && unidade && dezena !== 1 ? " B " : ""}`
+        retorno += `${dezena && unidade && dezena !== 1 ? " E " : ""}`
         retorno += `${(dezena !== 1) ? getUnidades(numeroComZeros[2]) : ""}`;
 
         break;
@@ -139,6 +157,10 @@ const programa = () => {
     const numeroUsuario = prompt('Digite um número: ');
     console.log(converteStringDeNumeroParaExtenso(numeroUsuario));
   // } while (true);
+
+  // for (let i = 1000; i < 1000000000; i += 1000) {
+  //   console.log(converteStringDeNumeroParaExtenso(String(i)));
+  // }
 }
 
 programa();
