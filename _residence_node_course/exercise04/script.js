@@ -153,14 +153,20 @@ const escreverPorExtenso = (numero) => {
 const programa = () => {
   let desejaContinuar;
 
-  // do {
+  do {
     const numeroUsuario = prompt('Digite um número: ');
-    console.log(converteStringDeNumeroParaExtenso(numeroUsuario));
-  // } while (true);
+    const numeroPorExtenso = converteStringDeNumeroParaExtenso(numeroUsuario);
 
-  // for (let i = 1000; i < 1000000000; i += 1000) {
-  //   console.log(converteStringDeNumeroParaExtenso(String(i)));
-  // }
+    if (!numeroPorExtenso) {
+      alert("Digite um número válido!");
+      desejaContinuar = true;
+      continue;
+    };
+
+    alert(numeroPorExtenso);
+
+    desejaContinuar = confirm('Deseja realizar outra conversão?');
+  } while (desejaContinuar);
 }
 
 programa();
