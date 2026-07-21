@@ -1,0 +1,19 @@
+{
+  "name": "web-socket-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web-socket-client-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ws": "^8.21.1"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1"
+  }
+}
