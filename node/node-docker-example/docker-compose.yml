@@ -1,0 +1,6 @@
+services:
+  prod:
+    container_name: docker-test
+    build:
+      context: .
+      dockerfile: ./Dockerfile
